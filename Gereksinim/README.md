@@ -18,5 +18,5 @@
 
 # Gereksinim Dağılımları
 
-1. [Özge Avcıoğlu ](https://github.com/Nurshot/MacroCalculator/Gereksinim/ozge/README.md)  
-2. [Nurşat Bülbül ](https://github.com/Nurshot/MacroCalculator/Gereksinim/nursat/README.md)
+1. [Özge Avcıoğlu ](https://github.com/Nurshot/MacroCalculator/blob/main/Gereksinim/ozge/Ozge.md)  
+2. [Nurşat Bülbül ](https://github.com/Nurshot/MacroCalculator/blob/main/Gereksinim/nursat/README.md)
