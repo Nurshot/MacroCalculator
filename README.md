@@ -10,5 +10,12 @@
 **Proje Ekibi**: Özge Avcıoğlu, Nurşat Bülbül
 
 
- 1. Proje Planı
+ 1. [Proje Planı]()
  2. [Gereksinim Analizi](https://github.com/Nurshot/MacroCalculator/tree/main/Gereksinim)
+ 3. [Durum Diyagramı]()
+ 4. [Drurum Senaryoları]()
+ 5. [Veritabanı Diyagramı]()
+ 6. [Front-End]()
+ 7. [Back-End]()
+ 8. [Test]()
+ 9. [Geliştirici ve Kullanıcı Dökümantasyonları]()
