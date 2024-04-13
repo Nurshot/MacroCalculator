@@ -13,7 +13,7 @@
  1. [Proje Planı](https://1drv.ms/x/c/d51141afdf456087/EW9ee9vuLuRBj-mWV_KOIxoBJ1suSZYAjg49quANIsc-sA?e=cuvqsO)
  2. [Gereksinim Analizi](https://github.com/Nurshot/MacroCalculator/tree/main/Gereksinim)
  3. [Durum Diyagramı]()
- 4. [Drurum Senaryoları]()
+ 4. [Durum Senaryoları](https://github.com/Nurshot/MacroCalculator/tree/main/Senaryo)
  5. [Veritabanı Diyagramı]()
  6. [Front-End]()
  7. [Back-End]()
