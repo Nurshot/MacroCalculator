@@ -14,8 +14,13 @@
  2. [Gereksinim Analizi](https://github.com/Nurshot/MacroCalculator/tree/main/Gereksinim)
  3. [Durum Diyagramı](https://github.com/Nurshot/MacroCalculator/blob/main/durumdiyagrami.jpeg?raw=true)
  4. [Durum Senaryoları](https://github.com/Nurshot/MacroCalculator/tree/main/Senaryo)
- 5. [Veritabanı Diyagramı](https://github.com/Nurshot/MacroCalculator/blob/main/veritabanidiyagram.png?raw=true)
- 6. [Front-End]()
- 7. [Back-End]()
- 8. [Test]()
- 9. [Geliştirici ve Kullanıcı Dökümantasyonları]()
+    
+    [a. Özge Avcıoğlu Senaryo](https://github.com/Nurshot/MacroCalculator/blob/main/Senaryo/ozge.md)
+    
+    [b. Nurşat Bülbül Senaryo](https://github.com/Nurshot/MacroCalculator/blob/main/Senaryo/nursat.md)
+    
+ 6. [Veritabanı Diyagramı](https://github.com/Nurshot/MacroCalculator/blob/main/veritabanidiyagram.png?raw=true)
+ 7. [Front-End]()
+ 8. [Back-End]()
+ 9. [Test]()
+ 10. [Geliştirici ve Kullanıcı Dökümantasyonları]()
