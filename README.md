@@ -14,7 +14,7 @@
  2. [Gereksinim Analizi](https://github.com/Nurshot/MacroCalculator/tree/main/Gereksinim)
  3. [Durum Diyagramı]()
  4. [Durum Senaryoları](https://github.com/Nurshot/MacroCalculator/tree/main/Senaryo)
- 5. [Veritabanı Diyagramı]()
+ 5. [Veritabanı Diyagramı](https://github.com/Nurshot/MacroCalculator/blob/main/veritabanidiyagram.png?raw=true)
  6. [Front-End]()
  7. [Back-End]()
  8. [Test]()
