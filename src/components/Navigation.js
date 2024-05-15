@@ -12,7 +12,7 @@ import LoginScreen from "../screens/LoginScreen";
 import RegisterScreen from "../screens/RegisterScreen";
 import { AuthContext } from "../context/AuthContext";
 import SplashScreen from "../screens/SplashScreen";
-import MealsScreen from "../screens/MealsScreen";
+import RecipeScreen from "../screens/RecipeScreen";
 import FoodScreen from "../screens/FoodScreen";
 import ProfileScreen from "../screens/ProfileScreen";
 import FoodDetailScreen from "../screens/FoodDetailScreen";
@@ -43,8 +43,8 @@ function HomeTabNavigator() {
           <Icon name='home-outline' size={size} color={color} />
         )
       }} />
-      <Tab.Screen name="Meals" component={MealsScreen} options={{
-        title:"Meals",
+      <Tab.Screen name="Recipes" component={RecipeScreen} options={{
+        title:"Recipes",
         tabBarIcon: ({ color, size }) => (
           <Icon name='restaurant-outline' size={size} color={color} />
         )
