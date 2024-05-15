@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Image, TextInput, TouchableOpacity } from 'react-native';
-import { FontAwesome } from '@expo/vector-icons'; // For icons
+import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { FontAwesome, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons'; // For icons
+import { LinearGradient } from 'expo-linear-gradient';
 
-const FoodDetailScreen = ({ route }) => {
+const FoodDetailScreen = ({ route, navigation }) => {
   const { food } = route.params;
   const [portion, setPortion] = useState(1);
 
@@ -20,8 +21,13 @@ const FoodDetailScreen = ({ route }) => {
     }
   };
 
+  const handleAddMeal = () => {
+    console.log(`Adding ${portion} portion(s) of ${food.name} to the meal`);
+    navigation.goBack();
+  };
+
   return (
-    <View style={styles.container}>
+    <LinearGradient colors={['#f3f4f6', '#e2e8f0']} style={styles.container}>
       <Image source={{ uri: food.image }} style={styles.image} />
       <Text style={styles.title}>{food.name}</Text>
 
@@ -37,17 +43,43 @@ const FoodDetailScreen = ({ route }) => {
       </View>
 
       <View style={styles.nutrientContainer}>
-        <NutrientRow label="Protein" value={calculateNutrient(food.protein)} unit="g" />
-        <NutrientRow label="Carbs" value={calculateNutrient(food.carbs)} unit="g" />
-        <NutrientRow label="Fat" value={calculateNutrient(food.fat)} unit="g" />
-        <NutrientRow label="Kcal" value={calculateNutrient(food.kcal)} unit="" />
+        <NutrientRow
+          label="Protein"
+          value={calculateNutrient(food.protein)}
+          unit="g"
+          icon={<MaterialCommunityIcons name="food-variant" size={24} color="#007bff" />}
+        />
+        <NutrientRow
+          label="Carbs"
+          value={calculateNutrient(food.carbs)}
+          unit="g"
+          icon={<MaterialCommunityIcons name="rice" size={24} color="#007bff" />}
+        />
+        <NutrientRow
+          label="Fat"
+          value={calculateNutrient(food.fat)}
+          unit="g"
+          icon={<MaterialCommunityIcons name="oil" size={24} color="#007bff" />}
+        />
+        <NutrientRow
+          label="Kcal"
+          value={calculateNutrient(food.kcal)}
+          unit=""
+          icon={<MaterialCommunityIcons name="fire" size={24} color="#007bff" />}
+        />
       </View>
-    </View>
+
+      <TouchableOpacity onPress={handleAddMeal} style={styles.addButton}>
+        <Ionicons name="add-circle-outline" size={32} color="#4caf50" />
+        <Text style={styles.addButtonText}>Add to Meal</Text>
+      </TouchableOpacity>
+    </LinearGradient>
   );
 };
 
-const NutrientRow = ({ label, value, unit }) => (
+const NutrientRow = ({ label, value, unit, icon }) => (
   <View style={styles.nutrientRow}>
+    <View style={styles.nutrientIcon}>{icon}</View>
     <Text style={styles.nutrientLabel}>{label}:</Text>
     <Text style={styles.nutrientValue}>{value}{unit}</Text>
   </View>
@@ -100,25 +132,48 @@ const styles = StyleSheet.create({
     padding: 20,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 3,
-    width: '90%', // Increased width to 90% 
-    alignSelf: 'center', // Center the container horizontally
+    shadowOpacity: 0.2,
+    shadowRadius: 5,
+    marginBottom: 20,
+    width: '100%',
   },
   nutrientRow: {
     flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 10,
     justifyContent: 'space-between',
-    marginVertical: 5,
+  },
+  nutrientIcon: {
+    marginRight: 10,
   },
   nutrientLabel: {
-    fontSize: 18,
-    color: '#555',
+    fontSize: 16,
+    fontWeight: 'bold',
+    flex: 1,
+    color: '#333',
   },
   nutrientValue: {
+    fontSize: 16,
+    color: '#555',
+  },
+  addButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#fff',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 10,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 5,
+  },
+  addButtonText: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: '#333',
+    marginLeft: 10,
+    color: '#4caf50',
   },
 });
 

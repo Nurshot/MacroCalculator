@@ -5,6 +5,7 @@ import {
 import { useNavigation } from '@react-navigation/native';
 import { Card } from 'react-native-paper';
 import { LinearGradient } from 'expo-linear-gradient';
+import { Ionicons } from '@expo/vector-icons';
 
 const FoodScreen = () => {
   const allFoods = [
@@ -115,6 +116,11 @@ const FoodScreen = () => {
     }
   };
 
+  const handleAddMeal = (food) => {
+    // Logic to add the food to a meal
+    console.log(`Adding ${food.name} to the meal`);
+  };
+
   const navigation = useNavigation();
 
   return (
@@ -125,26 +131,34 @@ const FoodScreen = () => {
           <TextInput
             style={styles.searchInput}
             placeholder="Search foods..."
-            value={searchQuery}
+            valuevalue={searchQuery}
             onChangeText={handleSearch}
           />
           {filteredFoods.map((food) => (
             <Card key={food.id} style={styles.foodItem}>
-              <TouchableOpacity 
-                onPress={() => navigation.navigate('FoodDetail', { food })}
-                style={{ flexDirection: "row", alignItems: "center", flex: 1 }} // Added flex: 1 here
-              >
-                <Image source={{ uri: food.image }} style={styles.image} />
-                <View style={styles.foodInfo}>
-                  <Text style={styles.subtitle}>{food.name}</Text>
-                  <View style={styles.nutrientInfo}>
-                    <Text style={styles.info}>Protein: {food.protein}</Text>
-                    <Text style={styles.info}>Carbs: {food.carbs}</Text>
-                    <Text style={styles.info}>Fat: {food.fat}</Text>
-                    <Text style={styles.info}>Kalori: {food.kcal}</Text>
+              <View style={{ flexDirection: "row", alignItems: "center", flex: 1 }}>
+                <TouchableOpacity
+                  onPress={() => navigation.navigate('FoodDetail', { food })}
+                  style={{ flexDirection: "row", alignItems: "center", flex: 1 }}
+                >
+                  <Image source={{ uri: food.image }} style={styles.image} />
+                  <View style={styles.foodInfo}>
+                    <Text style={styles.subtitle}>{food.name}</Text>
+                    <View style={styles.nutrientInfo}>
+                      <Text style={styles.info}>Protein: {food.protein}</Text>
+                      <Text style={styles.info}>Carbs: {food.carbs}</Text>
+                      <Text style={styles.info}>Fat: {food.fat}</Text>
+                      <Text style={styles.info}>Kalori: {food.kcal}</Text>
+                    </View>
                   </View>
-                </View>
-              </TouchableOpacity>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => handleAddMeal(food)}
+                  style={styles.addButton}
+                >
+                  <Ionicons name="add-circle-outline" size={32} color="#4caf50" />
+                </TouchableOpacity>
+              </View>
             </Card>
           ))}
         </View>
@@ -216,6 +230,11 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: "#555",
     marginBottom: 2,
+  },
+  addButton: {
+    marginLeft: 10,
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
 
