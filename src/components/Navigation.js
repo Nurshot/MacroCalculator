@@ -18,8 +18,9 @@ import ProfileScreen from "../screens/ProfileScreen";
 import FoodDetailScreen from "../screens/FoodDetailScreen";
 import SettingsScreen from "../screens/SettingsScreen";
 import SettingsChangePassScreen from "../screens/SettingsChangePassScreen";
-import SettingsAboutApp from "../screens/SettingsAboutApp";
-
+import SettingsAboutApp from "../screens/SettingsAboutAppScreen";
+import SettingsTermsConditionsScreen from "../screens/SettingsTermsConditionsScreen";
+import SettingsAccountScreen from "../screens/SettingsAccountScreen";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -100,7 +101,21 @@ function MainStackNavigator() {
         component={SettingsAboutApp}
         options={{ headerShown: true }} 
       />
+      <Stack.Screen
+        name="SettingsTermsConditionsScreen"
+        component={SettingsTermsConditionsScreen}
+        options={{ headerShown: true }} 
+      />
+
+      <Stack.Screen
+        name="SettingsAccountScreen"
+        component={SettingsAccountScreen}
+        options={{ headerShown: true }} 
+      />
     </Stack.Navigator>
+    
+
+
   );
 }
 

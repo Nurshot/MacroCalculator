@@ -9,7 +9,7 @@ const SettingsScreen = ({ navigation }) => {
     <ScrollView style={styles.container}>
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>Account</Text>
-        <TouchableOpacity style={styles.option} onPress={() => navigation.navigate('AccountDetails')}>
+        <TouchableOpacity style={styles.option} onPress={() => navigation.navigate('SettingsAccountScreen')}>
           <Ionicons name="person-circle-outline" size={24} color="#333" />
           <Text style={styles.optionText}>Account Details</Text>
           <Ionicons name="chevron-forward-outline" size={24} color="#ccc" />
@@ -47,7 +47,7 @@ const SettingsScreen = ({ navigation }) => {
           <Text style={styles.optionText}>About App</Text>
           <Ionicons name="chevron-forward-outline" size={24} color="#ccc" />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.option} onPress={() => navigation.navigate('TermsConditions')}>
+        <TouchableOpacity style={styles.option} onPress={() => navigation.navigate('SettingsTermsConditionsScreen')}>
           <Ionicons name="document-text-outline" size={24} color="#333" />
           <Text style={styles.optionText}>Terms & Conditions</Text>
           <Ionicons name="chevron-forward-outline" size={24} color="#ccc" />

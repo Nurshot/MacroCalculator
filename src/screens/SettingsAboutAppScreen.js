@@ -19,7 +19,7 @@ const SettingsAboutApp = () => {
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.header}>
         <Image
-          source={{ uri: 'https://example.com/logo.png' }}  // Logo URL'sini buraya ekleyin
+          source={{ uri: 'https://taslak.sdu.edu.tr/assets/uploads/sites/275/other/43621.jpg' }}  // Logo URL'sini buraya ekleyin
           style={styles.logo}
         />
         <Text style={styles.title}>Makro Calculator</Text>
