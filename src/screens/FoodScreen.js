@@ -10,7 +10,7 @@ const FoodScreen = () => {
   const allFoods = [
     {
       id: "1",
-      name: "Yumurta",
+      name: "Yumurtaa",
       protein: "13g",
       carbs: "1g",
       fat: "11g",
