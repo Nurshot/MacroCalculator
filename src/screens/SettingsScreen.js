@@ -14,7 +14,7 @@ const SettingsScreen = ({ navigation }) => {
           <Text style={styles.optionText}>Account Details</Text>
           <Ionicons name="chevron-forward-outline" size={24} color="#ccc" />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.option} onPress={() => navigation.navigate('ChangePassword')}>
+        <TouchableOpacity style={styles.option} onPress={() => navigation.navigate('SettingsChangePassScreen')}>
           <Ionicons name="key-outline" size={24} color="#333" />
           <Text style={styles.optionText}>Change Password</Text>
           <Ionicons name="chevron-forward-outline" size={24} color="#ccc" />
