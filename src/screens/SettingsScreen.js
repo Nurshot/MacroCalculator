@@ -42,7 +42,7 @@ const SettingsScreen = ({ navigation }) => {
 
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>About</Text>
-        <TouchableOpacity style={styles.option} onPress={() => navigation.navigate('AboutApp')}>
+        <TouchableOpacity style={styles.option} onPress={() => navigation.navigate('SettingsAboutApp')}>
           <Ionicons name="information-circle-outline" size={24} color="#333" />
           <Text style={styles.optionText}>About App</Text>
           <Ionicons name="chevron-forward-outline" size={24} color="#ccc" />

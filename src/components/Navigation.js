@@ -18,6 +18,8 @@ import ProfileScreen from "../screens/ProfileScreen";
 import FoodDetailScreen from "../screens/FoodDetailScreen";
 import SettingsScreen from "../screens/SettingsScreen";
 import SettingsChangePassScreen from "../screens/SettingsChangePassScreen";
+import SettingsAboutApp from "../screens/SettingsAboutApp";
+
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -91,6 +93,11 @@ function MainStackNavigator() {
        <Stack.Screen
         name="SettingsChangePassScreen"
         component={SettingsChangePassScreen}
+        options={{ headerShown: true }} 
+      />
+      <Stack.Screen
+        name="SettingsAboutApp"
+        component={SettingsAboutApp}
         options={{ headerShown: true }} 
       />
     </Stack.Navigator>
