@@ -103,22 +103,24 @@ const FoodScreen = () => {
 
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredFoods, setFilteredFoods] = useState(allFoods);
+  const [meal, setMeal] = useState([]);
 
-  const handleSearch = (query: string) => {
+  const handleSearch = (query) => {
     setSearchQuery(query);
-    if (query.trim() === "") {
-      setFilteredFoods(allFoods);
-    } else {
-      const filtered = allFoods.filter((food) =>
-        food.name.toLowerCase().includes(query.toLowerCase())
-      );
-      setFilteredFoods(filtered);
-    }
+    setFilteredFoods(query.trim() ? allFoods.filter((food) =>
+      food.name.toLowerCase().includes(query.toLowerCase())) : allFoods);
   };
 
   const handleAddMeal = (food) => {
-    // Logic to add the food to a meal
-    console.log(`Adding ${food.name} to the meal`);
+    if (!meal.some(item => item.id === food.id)) {
+      setMeal([...meal, food]);
+      console.log(`Adding ${food.name} to the meal`);
+    }
+  };
+
+  const handleRemoveMeal = (food) => {
+    setMeal(meal.filter(item => item.id !== food.id));
+    console.log(`Removing ${food.name} from the meal`);
   };
 
   const navigation = useNavigation();
@@ -131,7 +133,7 @@ const FoodScreen = () => {
           <TextInput
             style={styles.searchInput}
             placeholder="Search foods..."
-            valuevalue={searchQuery}
+            value={searchQuery}
             onChangeText={handleSearch}
           />
           {filteredFoods.map((food) => (
@@ -152,12 +154,20 @@ const FoodScreen = () => {
                     </View>
                   </View>
                 </TouchableOpacity>
-                <TouchableOpacity
-                  onPress={() => handleAddMeal(food)}
-                  style={styles.addButton}
-                >
-                  <Ionicons name="add-circle-outline" size={32} color="#4caf50" />
-                </TouchableOpacity>
+                <View style={{ flexDirection: "row" }}>
+                  <TouchableOpacity
+                    onPress={() => handleAddMeal(food)}
+                    style={styles.addButton}
+                  >
+                    <Ionicons name="add-circle-outline" size={32} color="#4caf50" />
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    onPress={() => handleRemoveMeal(food)}
+                    style={styles.removeButton}
+                  >
+                    <Ionicons name="remove-circle-outline" size={32} color="#f44336" />
+                  </TouchableOpacity>
+                </View>
               </View>
             </Card>
           ))}
@@ -236,6 +246,11 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-});
-
-export default FoodScreen;
+  removeButton: {
+    marginLeft: 10,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  });
+  
+  export default FoodScreen;
