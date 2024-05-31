@@ -90,6 +90,7 @@ class UserUpdate(SQLModel):
     is_superadmin: Optional[bool] = None
 
 
+
 class RecipeBase(SQLModel):
     recipe_name: str
     recipe_description: Optional[str] = None
@@ -134,7 +135,13 @@ class Meal(SQLModel, table=True):
     user_meals: List["UserMeal"] = Relationship(back_populates="meal")
 
 
-class FavoriteRecipe(SQLModel, table=True):
+# FavoriteRecipe model
+class FavoriteRecipeBase(SQLModel):
+    user_id: int
+    recipe_id: int
+
+
+class FavoriteRecipe(FavoriteRecipeBase, table=True):
     favorite_recipe_id: int = Field(default=None, primary_key=True)
     user_id: int = Field(foreign_key="user.user_id")
     recipe_id: int = Field(foreign_key="recipe.recipe_id")
@@ -143,7 +150,25 @@ class FavoriteRecipe(SQLModel, table=True):
     recipe: Recipe = Relationship(back_populates="favorite_recipes")
 
 
-class FavoriteFood(SQLModel, table=True):
+class FavoriteRecipeCreate(FavoriteRecipeBase):
+    pass
+
+
+class FavoriteRecipeRead(FavoriteRecipeBase):
+    favorite_recipe_id: int
+
+
+class FavoriteRecipeUpdate(SQLModel):
+    user_id: Optional[int] = None
+    recipe_id: Optional[int] = None
+
+# FavoriteFood model
+class FavoriteFoodBase(SQLModel):
+    user_id: int
+    food_id: int
+
+
+class FavoriteFood(FavoriteFoodBase, table=True):
     favorite_food_id: int = Field(default=None, primary_key=True)
     user_id: int = Field(foreign_key="user.user_id")
     food_id: int = Field(foreign_key="food.food_id")
@@ -152,14 +177,49 @@ class FavoriteFood(SQLModel, table=True):
     food: Food = Relationship(back_populates="favorite_foods")
 
 
-class UserMeal(SQLModel, table=True):
+class FavoriteFoodCreate(FavoriteFoodBase):
+    pass
+
+
+class FavoriteFoodRead(FavoriteFoodBase):
+    favorite_food_id: int
+
+
+class FavoriteFoodUpdate(SQLModel):
+    user_id: Optional[int] = None
+    food_id: Optional[int] = None
+
+# UserMeal model
+class UserMealBase(SQLModel):
+    user_id: int
+    meal_id: int
+    food_id: int
+    quantity: float
+    meal_date: date
+
+
+class UserMeal(UserMealBase, table=True):
     user_meal_id: int = Field(default=None, primary_key=True)
     user_id: int = Field(foreign_key="user.user_id")
     meal_id: int = Field(foreign_key="meal.meal_id")
     food_id: int = Field(foreign_key="food.food_id")
-    quantity: float
-    meal_date: date
 
     user: User = Relationship(back_populates="user_meals")
     meal: Meal = Relationship(back_populates="user_meals")
     food: Food = Relationship(back_populates="user_meals")
+
+
+class UserMealCreate(UserMealBase):
+    pass
+
+
+class UserMealRead(UserMealBase):
+    user_meal_id: int
+
+
+class UserMealUpdate(SQLModel):
+    user_id: Optional[int] = None
+    meal_id: Optional[int] = None
+    food_id: Optional[int] = None
+    quantity: Optional[float] = None
+    meal_date: Optional[date] = None
