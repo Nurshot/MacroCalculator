@@ -128,13 +128,6 @@ class RecipeUpdate(SQLModel):
     recipe_image: Optional[str] = None
 
 
-class Meal(SQLModel, table=True):
-    meal_id: int = Field(default=None, primary_key=True)
-    meal_name: str
-
-    user_meals: List["UserMeal"] = Relationship(back_populates="meal")
-
-
 # FavoriteRecipe model
 class FavoriteRecipeBase(SQLModel):
     user_id: int
@@ -188,6 +181,12 @@ class FavoriteFoodRead(FavoriteFoodBase):
 class FavoriteFoodUpdate(SQLModel):
     user_id: Optional[int] = None
     food_id: Optional[int] = None
+
+class Meal(SQLModel, table=True):
+    meal_id: int = Field(default=None, primary_key=True)
+    meal_name: str
+    user_meals: List["UserMeal"] = Relationship(back_populates="meal")
+
 
 # UserMeal model
 class UserMealBase(SQLModel):

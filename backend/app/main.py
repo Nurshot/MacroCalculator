@@ -4,25 +4,42 @@ from fastapi import Depends, FastAPI
 from sqlmodel.ext.asyncio.session import AsyncSession
 
 from db import get_session, init_db
-from routers import song
-from routers import foods,recipes,users,favorite_recipes,favorite_foods
+from fastapi.middleware.cors import CORSMiddleware
+from routers import foods,recipes,users,favorite_recipes,favorite_foods,meals
 
 import uvicorn
 
 
 app = FastAPI()
 
+origins = [
+    "http://localhost:3000",
+    "localhost:3000",
+    "http://localhost:5173",  # Add this line
+    "localhost:5173" 
+]
+
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"]
+)
+
 @app.on_event("startup")
 async def on_startup():
     await init_db()
 
 
-app.include_router(song.router)
+
 app.include_router(foods.router)
 app.include_router(recipes.router)
 app.include_router(users.router)
 app.include_router(favorite_recipes.router)
 app.include_router(favorite_foods.router)
+app.include_router(meals.router)
 
 
 @app.get("/ping")
