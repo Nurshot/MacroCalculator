@@ -1,20 +1,7 @@
 from sqlmodel import SQLModel, Field, Relationship
 from typing import Optional, List
 from datetime import date
-
-
-class SongBase(SQLModel):
-    name: str
-    artist: str
-    year: Optional[int] = None
-
-
-class Song(SongBase, table=True):
-    id: int = Field(default=None, primary_key=True)
-
-
-class SongCreate(SongBase):
-    pass
+from pydantic import BaseModel
 
 
 class FoodBase(SQLModel):
@@ -51,6 +38,7 @@ class FoodUpdate(SQLModel):
     food_image: Optional[str] = None
 
 
+
 class UserBase(SQLModel):
     username: str
     email: str
@@ -72,6 +60,11 @@ class User(UserBase, table=True):
 
 class UserCreate(UserBase):
     pass
+
+
+class UserLogin(BaseModel):
+    email: str
+    password: str
 
 
 class UserRead(UserBase):
