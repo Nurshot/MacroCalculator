@@ -1,121 +1,51 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
-  StyleSheet, Image, Text, View, ScrollView, TextInput, TouchableOpacity
+  StyleSheet, Image, Text, View, ScrollView, TextInput, TouchableOpacity, ActivityIndicator
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Card } from 'react-native-paper';
 import { LinearGradient } from 'expo-linear-gradient';
+import { fetchFoods } from '../api.js';
 
 const FoodScreen = () => {
-  const allFoods = [
-    {
-      id: "1",
-      name: "Yumurta",
-      protein: "13g",
-      carbs: "1g",
-      fat: "11g",
-      kcal: "155",
-      image: "https://avatars.githubusercontent.com/u/9664363?v=4",
-    },
-    {
-      id: "2",
-      name: "Elma",
-      protein: "0.5g",
-      carbs: "25g",
-      fat: "0.3g",
-      kcal: "52",
-      image: "https://avatars.githubusercontent.com/u/43719324?v=4",
-    },
-    {
-      id: "3",
-      name: "Avokado",
-      protein: "2g",
-      carbs: "9g",
-      fat: "15g",
-      kcal: "160",
-      image: "https://avatars.githubusercontent.com/u/9919?v=4",
-    },
-    {
-      id: "4",
-      name: "Tavuk Göğsü",
-      protein: "31g",
-      carbs: "0g",
-      fat: "3.6g",
-      kcal: "165",
-      image: "https://avatars.githubusercontent.com/u/210414?v=4",
-    },
-    {
-      id: "5",
-      name: "Muz",
-      protein: "1.3g",
-      carbs: "27g",
-      fat: "0.3g",
-      kcal: "89",
-      image: "https://avatars.githubusercontent.com/u/10639145?v=4",
-    },
-    {
-      id: "6",
-      name: "Somon",
-      protein: "25g",
-      carbs: "0g",
-      fat: "13g",
-      kcal: "208",
-      image: "https://avatars.githubusercontent.com/u/14101776?v=4",
-    },
-    {
-      id: "7",
-      name: "Brokoli",
-      protein: "2.8g",
-      carbs: "6g",
-      fat: "0.4g",
-      kcal: "34",
-      image: "https://avatars.githubusercontent.com/u/17219288?v=4",
-    },
-    {
-      id: "8",
-      name: "Çilek",
-      protein: "0.8g",
-      carbs: "8g",
-      fat: "0.3g",
-      kcal: "32",
-      image: "https://avatars.githubusercontent.com/u/362606?v=4",
-    },
-    {
-      id: "9",
-      name: "Bezelye",
-      protein: "5g",
-      carbs: "14g",
-      fat: "0.4g",
-      kcal: "81",
-      image: "https://avatars.githubusercontent.com/u/18133?v=4",
-    },
-    {
-      id: "10",
-      name: "Ceviz",
-      protein: "15g",
-      carbs: "14g",
-      fat: "65g",
-      kcal: "654",
-      image: "https://avatars.githubusercontent.com/u/1481251?v=4",
-    },
-  ];
-
   const [searchQuery, setSearchQuery] = useState("");
-  const [filteredFoods, setFilteredFoods] = useState(allFoods);
+  const [foods, setFoods] = useState([]);
+  const [filteredFoods, setFilteredFoods] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const handleSearch = (query: string) => {
+  useEffect(() => {
+    const getFoods = async () => {
+      try {
+        const foodsData = await fetchFoods();
+        setFoods(foodsData);
+        setFilteredFoods(foodsData);
+      } catch (error) {
+        console.error('Error fetching foods:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    getFoods();
+  }, []);
+
+  const handleSearch = (query) => {
     setSearchQuery(query);
     if (query.trim() === "") {
-      setFilteredFoods(allFoods);
+      setFilteredFoods(foods);
     } else {
-      const filtered = allFoods.filter((food) =>
-        food.name.toLowerCase().includes(query.toLowerCase())
+      const filtered = foods.filter((food) =>
+        food.food_name.toLowerCase().includes(query.toLowerCase())
       );
       setFilteredFoods(filtered);
     }
   };
 
   const navigation = useNavigation();
+
+  if (loading) {
+    return <ActivityIndicator size="large" color="#0000ff" />;
+  }
 
   return (
     <LinearGradient colors={['#f3f4f6', '#e2e8f0']} style={styles.container}>
@@ -129,19 +59,19 @@ const FoodScreen = () => {
             onChangeText={handleSearch}
           />
           {filteredFoods.map((food) => (
-            <Card key={food.id} style={styles.foodItem}>
+            <Card key={food.food_id} style={styles.foodItem}>
               <TouchableOpacity 
-                onPress={() => navigation.navigate('FoodDetail', { food })}
-                style={{ flexDirection: "row", alignItems: "center", flex: 1 }} // Added flex: 1 here
+                onPress={() => navigation.navigate('FoodDetail', { id: food.food_id })}
+                style={{ flexDirection: "row", alignItems: "center", flex: 1 }}
               >
-                <Image source={{ uri: food.image }} style={styles.image} />
+                <Image source={{ uri: food.food_image }} style={styles.image} />
                 <View style={styles.foodInfo}>
-                  <Text style={styles.subtitle}>{food.name}</Text>
+                  <Text style={styles.subtitle}>{food.food_name}</Text>
                   <View style={styles.nutrientInfo}>
-                    <Text style={styles.info}>Protein: {food.protein}</Text>
-                    <Text style={styles.info}>Carbs: {food.carbs}</Text>
-                    <Text style={styles.info}>Fat: {food.fat}</Text>
-                    <Text style={styles.info}>Kalori: {food.kcal}</Text>
+                    <Text style={styles.info}>Protein: {food.protein}g</Text>
+                    <Text style={styles.info}>Carbs: {food.carbonhidrats}g</Text>
+                    <Text style={styles.info}>Fat: {food.fat}g</Text>
+                    <Text style={styles.info}>Calories: {food.calories}</Text>
                   </View>
                 </View>
               </TouchableOpacity>

@@ -1,10 +1,28 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, Image, TextInput, TouchableOpacity } from 'react-native';
-import { FontAwesome } from '@expo/vector-icons'; // For icons
+import React, { useState, useEffect } from 'react';
+import { View, Text, StyleSheet, Image, TouchableOpacity, ActivityIndicator } from 'react-native';
+import { FontAwesome } from '@expo/vector-icons';
+import { fetchFoodById } from '../api.js'; // Import the fetchFoodById function
 
 const FoodDetailScreen = ({ route }) => {
-  const { food } = route.params;
+  const { id } = route.params;
+  const [food, setFood] = useState(null);
   const [portion, setPortion] = useState(1);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const getFood = async () => {
+      try {
+        const foodDetails = await fetchFoodById(id);
+        setFood(foodDetails);
+      } catch (error) {
+        console.error('Error fetching food details:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    getFood();
+  }, [id]);
 
   const calculateNutrient = (value) => {
     return (parseFloat(value) * portion).toFixed(2);
@@ -20,10 +38,18 @@ const FoodDetailScreen = ({ route }) => {
     }
   };
 
+  if (loading) {
+    return <ActivityIndicator size="large" color="#0000ff" />;
+  }
+
+  if (!food) {
+    return <Text>Food not found</Text>;
+  }
+
   return (
     <View style={styles.container}>
-      <Image source={{ uri: food.image }} style={styles.image} />
-      <Text style={styles.title}>{food.name}</Text>
+      <Image source={{ uri: food.food_image }} style={styles.image} />
+      <Text style={styles.title}>{food.food_name}</Text>
 
       <View style={styles.portionContainer}>
         <Text style={styles.portionLabel}>Portion:</Text>
@@ -38,9 +64,9 @@ const FoodDetailScreen = ({ route }) => {
 
       <View style={styles.nutrientContainer}>
         <NutrientRow label="Protein" value={calculateNutrient(food.protein)} unit="g" />
-        <NutrientRow label="Carbs" value={calculateNutrient(food.carbs)} unit="g" />
+        <NutrientRow label="Carbs" value={calculateNutrient(food.carbonhidrats)} unit="g" />
         <NutrientRow label="Fat" value={calculateNutrient(food.fat)} unit="g" />
-        <NutrientRow label="Kcal" value={calculateNutrient(food.kcal)} unit="" />
+        <NutrientRow label="Calories" value={calculateNutrient(food.calories)} unit="" />
       </View>
     </View>
   );

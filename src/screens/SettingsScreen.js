@@ -28,12 +28,8 @@ const SettingsScreen = ({ navigation }) => {
 
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>My Goals</Text>
-        <TouchableOpacity style={styles.option} onPress={() => navigation.navigate('FitnessGoals')}>
-          <Ionicons name="fitness-outline" size={24} color="#333" />
-          <Text style={styles.optionText}>Fitness Goals</Text>
-          <Ionicons name="chevron-forward-outline" size={24} color="#ccc" />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.option} onPress={() => navigation.navigate('NutritionGoals')}>
+
+        <TouchableOpacity style={styles.option} onPress={() => navigation.navigate('SettingsNutritionScreen')}>
           <Ionicons name="restaurant-outline" size={24} color="#333" />
           <Text style={styles.optionText}>Nutrition Goals</Text>
           <Ionicons name="chevron-forward-outline" size={24} color="#ccc" />
