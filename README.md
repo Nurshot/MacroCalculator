@@ -30,6 +30,8 @@ Uygulama Youtube Videosu: https://www.youtube.com/watch?v=Kaf7kM-WRrE
 
 Backend Swagger UI Paneli: https://nurshot.net/docs
 
+Örnek Rest Api Bağlantısı: https://nurshot.net/foods
+
 FrontEnd Admin Kısmı: http://45.139.198.26:5173/login
 K. Adı= abc@gmail.com
 Şifre= 123
