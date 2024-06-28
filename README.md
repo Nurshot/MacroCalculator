@@ -24,3 +24,15 @@
  8. [Back-End](https://github.com/Nurshot/MacroCalculator/blob/main/Backend.md)
  9. [Test](https://github.com/Nurshot/MacroCalculator/blob/main/Test.md)
  10. [Geliştirici ve Kullanıcı Dökümantasyonları](https://github.com/Nurshot/MacroCalculator/blob/main/Geli%C5%9Ftirici%20ve%20Kullan%C4%B1c%C4%B1%20Dok%C3%BCmantasyonlar%C4%B1.md)
+
+
+Uygulama Youtube Videosu: https://www.youtube.com/watch?v=Kaf7kM-WRrE
+
+Backend Swagger UI Paneli: https://nurshot.net/docs
+
+FrontEnd Admin Kısmı: http://45.139.198.26:5173/login
+K. Adı= abc@gmail.com
+Şifre= 123
+
+
+
