@@ -15,7 +15,7 @@
 14. Tarif arama (Özge Avcıoğlu)  
 15. Tarif detayını gösterme (Özge Avcıoğlu)  
 16. Profil düzenleme (Nurşat Bülbül)
-17. Admin Üyeleri ve Tarifleri Görüntüleme Silme Güncelleme
+17. Admin Üyeleri ve Tarifleri Görüntüleme Silme Güncelleme (Nurşat Bülbül)
 
 # Gereksinim Dağılımları
 
