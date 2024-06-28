@@ -20,7 +20,7 @@
     [b. Nurşat Bülbül Senaryo](https://github.com/Nurshot/MacroCalculator/blob/main/Senaryo/nursat.md)
     
  6. [Veritabanı Diyagramı](https://github.com/Nurshot/MacroCalculator/blob/main/veritabanidiyagram.png?raw=true)
- 7. [Front-End]()
- 8. [Back-End]()
- 9. [Test]()
- 10. [Geliştirici ve Kullanıcı Dökümantasyonları]()
+ 7. [Front-End](https://github.com/Nurshot/MacroCalculator/blob/main/Frontend.md)
+ 8. [Back-End](https://github.com/Nurshot/MacroCalculator/blob/main/Backend.md)
+ 9. [Test](https://github.com/Nurshot/MacroCalculator/blob/main/Test.md)
+ 10. [Geliştirici ve Kullanıcı Dökümantasyonları](https://github.com/Nurshot/MacroCalculator/blob/main/Geli%C5%9Ftirici%20ve%20Kullan%C4%B1c%C4%B1%20Dok%C3%BCmantasyonlar%C4%B1.md)
