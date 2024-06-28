@@ -34,5 +34,8 @@ FrontEnd Admin Kısmı: http://45.139.198.26:5173/login
 K. Adı= abc@gmail.com
 Şifre= 123
 
+Ek Teknoloji Olarak;
+
+JWT Auth Kullanıldı. Nginx kuruldu reverse proxy sağlandı. İp gizleme ve dns için Cloudflare kuruldu. Güvenli bağlantı için ssl aktif edildi.
 
 
