@@ -38,4 +38,6 @@ Ek Teknoloji Olarak;
 
 JWT Auth Kullanıldı. Nginx kuruldu reverse proxy sağlandı. İp gizleme ve dns için Cloudflare kuruldu. Güvenli bağlantı için ssl aktif edildi.
 
+Merge ederken birbirine girmesin diye proje dosyalarını indirip toplayıp maine pushladım. Branchlerden ilgili commitleri görebilirsiniz.
+
 
