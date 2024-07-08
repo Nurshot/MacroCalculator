@@ -28,18 +28,4 @@
 
 Uygulama Youtube Videosu: https://www.youtube.com/watch?v=Kaf7kM-WRrE
 
-Backend Swagger UI Paneli: https://nurshot.net/docs
-
-Örnek Rest Api Bağlantısı: https://nurshot.net/foods
-
-FrontEnd Admin Kısmı: http://45.139.198.26:5173/login
-K. Adı= abc@gmail.com
-Şifre= 123
-
-Ek Teknoloji Olarak;
-
-JWT Auth Kullanıldı. Nginx kuruldu reverse proxy sağlandı. İp gizleme ve dns için Cloudflare kuruldu. Güvenli bağlantı için ssl aktif edildi.
-
-Merge ederken birbirine girmesin diye proje dosyalarını indirip toplayıp maine pushladım. Branchlerden ilgili commitleri görebilirsiniz.
-
-
+JWT Auth Kullanıldı. Nginx kuruldu reverse proxy sağlandı.
