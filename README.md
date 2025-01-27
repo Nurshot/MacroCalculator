@@ -26,6 +26,4 @@
  10. [Geliştirici ve Kullanıcı Dökümantasyonları](https://github.com/Nurshot/MacroCalculator/blob/main/Geli%C5%9Ftirici%20ve%20Kullan%C4%B1c%C4%B1%20Dok%C3%BCmantasyonlar%C4%B1.md)
 
 
-Uygulama Youtube Videosu: https://www.youtube.com/watch?v=Kaf7kM-WRrE
-
 JWT Auth Kullanıldı. Nginx kuruldu reverse proxy sağlandı.
